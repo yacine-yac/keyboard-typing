@@ -1,0 +1,12 @@
+.zone{width: 50%; height: 65%; border: 3px solid white;border-radius: 15px;
+padding: 15px;margin:auto auto;font-size: 18px;font-family: sans-serif;color: white !important;
+}
+.active{
+    color: white;
+}
+.n-active{
+    color: rgb(161, 161, 161);
+}
+.mistake{
+    color: red;
+}
