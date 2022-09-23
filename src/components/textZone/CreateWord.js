@@ -22,7 +22,7 @@ const CreateWord=({word,wordState,input,checkPosition})=>{
 
           setletterCounter(prev=>prev+1);
           letterCounter==(map_word.length-1) && checkPosition(prev=>prev+1);
-          console.log(map_word.length-1, 'tt',letterCounter,"res")
+           
           }
     }
     useEffect(()=>{  

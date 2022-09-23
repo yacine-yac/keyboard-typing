@@ -1,20 +1,18 @@
-import {useState} from "react";
+import {useState } from "react";
 import Keyboard from "./components/keyboard";
 import Textzone from './components/textZone';
-import "./App.css"
+import "./App.css"; 
 function App(){
-  const [state,setState]=useState(null);
-  const handleText=(input)=>{
-     setState(input);
-  };
+  const [state,setState]=useState(null); 
   return  <>
    <div className="demo1">
-     <Textzone text={state}   />
+     
+      <Textzone text={state} />
    </div>
    <div className="demo2">
-      <Keyboard/>
+      <Keyboard  textState={setState} />
    </div> 
   </>
 }
 
-export default App;
+export {App};
