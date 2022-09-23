@@ -1,5 +1,8 @@
-const CreateLetter=({x})=>{ 
-     return <i className="n-active">{x}</i>  
+import { memo } from "react";
+
+const CreateLetter=({x,letterState})=>{ 
+      
+     return <i className={letterState ==false ? "n-active":"active"}>{x}</i>  
    
 } 
-export default CreateLetter;
+export default memo(CreateLetter);
