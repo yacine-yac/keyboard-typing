@@ -42,8 +42,7 @@
       width: 3.5em;
   }
   
-  .keyboard__row > div[data-pressed],
-.keyboard__row > div[data-key]:active {
+  .keyboard__row > div[data-pressed] {
       background: #2a2a2a;
       color: #aaa; border:2px solid red;
       position: relative;
@@ -136,4 +135,4 @@
 .key-n{padding: 0; background: none;justify-content: space-between;border: 0;}
 .key-arrow{ position: relative; height: 50%; }
 .key-center{display: flex;align-items: center;}
-.active-block{background-color: rgb(3, 220, 244);}
+.active-block{background-color: rgb(248, 0, 99);transition:0.36s ease-in;}

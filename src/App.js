@@ -3,7 +3,7 @@ import Keyboard from "./components/keyboard";
 import Textzone from './components/textZone';
 import "./App.css"; 
 function App(){
-  const [state,setState]=useState(null); 
+  const [state,setState]=useState(null);  console.log(state,"state");
   return  <>
    <div className="demo1">
      
