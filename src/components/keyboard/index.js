@@ -26,11 +26,11 @@ function Keyboard({textState}){
              : HandleKeydown(e.key,targetting))
       )
   };
-  const handleText=(letter)=>{
+  const handleText=(letter)=>{ 
         textState(prev=> prev ?
                    (letter ==="Backspace" ? prev.slice(0,-1) : prev+letter):
                    (letter ==="Backspace" ? null: letter)
-        ); 
+        );  
   } 
   window.onkeyup=(e)=>{ blockButton[e.keyCode] && 
     (delete blockButton[e.keyCode],
