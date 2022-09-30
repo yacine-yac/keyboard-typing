@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-export default function TextInterval(){
-    const [state,setstate]=useState(false);
+export default function TextInterval({InputZone,setInputZone}){
+    const [state,setstate]=useState(false);  
+    InputZone ==true && setInputZone(false);
     window.onkeydown=(e)=>{ 
         if(e.shiftKey==true && e.keyCode==69){ console.log('dffdsfs');
             setstate(prev=> !prev)

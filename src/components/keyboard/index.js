@@ -1,6 +1,6 @@
 import "./index.css";
 import {useState,useEffect,memo} from "react";
-function Keyboard({textState}){
+function Keyboard({status,textState}){ //console.log('status',status);
   let button=[],blockButton={};
   const [capsButton,setcapsButton]=useState(false);
   const handleBlockButton=(nodeelement,keycode,key)=>{
@@ -19,22 +19,29 @@ function Keyboard({textState}){
               handleText(key);  
   }
   window.onkeydown=(e)=>{ 
-    const targetting=document.querySelector(`div[data-key="${e.keyCode}"]`);
-      targetting && (
-          targetting !==null && 
-             (targetting.getAttribute('block-button') !==null ? handleBlockButton(targetting,e.keyCode,e.key) 
-             : HandleKeydown(e.key,targetting))
-      )
+    if( !status ) {
+            const targetting=document.querySelector(`div[data-key="${e.keyCode}"]`);
+              targetting && (
+                  targetting !==null && 
+                    (targetting.getAttribute('block-button') !==null ? handleBlockButton(targetting,e.keyCode,e.key) 
+                    : HandleKeydown(e.key,targetting))
+              )
+              setTimeout(()=>{targetting.classList.remove("active-btn-k")},100); 
+    }
   };
-  const handleText=(letter)=>{ 
+  const handleText=(letter)=>{
+       
         textState(prev=> prev ?
                    (letter ==="Backspace" ? prev.slice(0,-1) : prev+letter):
                    (letter ==="Backspace" ? null: letter)
         );  
   } 
-  window.onkeyup=(e)=>{ blockButton[e.keyCode] && 
+  window.onkeyup=(e)=>{ 
+  if(!status ) {
+    blockButton[e.keyCode] && 
     (delete blockButton[e.keyCode],
     document.querySelector(`div[data-key="${e.keyCode}"]`).classList.remove('active-block')) 
+  }
   };
   /**jsx keyboard ===================================================================== */
     return <>

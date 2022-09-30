@@ -9,7 +9,7 @@ const CreateWord=({word,wordState,input,checkPosition})=>{
     });
     let [letterCounter,setletterCounter]=useState(0);
     let [checkWord,setcheckWord]=useState(map_word); 
-      
+    
     const checkingLetter=()=>{   
           if(input[input.length-1]==checkWord[letterCounter]["letter"]){
             setcheckWord(prev=>{ 
@@ -39,7 +39,7 @@ const CreateWord=({word,wordState,input,checkPosition})=>{
          input !== null &&  checkingLetter();
     },[input]) 
     return <>   
-    <span className={wordState==false ? 'n-active' :"span-active"}>{checkWord.map(( x,c )=>{
+    <span className={ (input ==null && wordState==false) ?  'n-active':"span-active"}>{checkWord.map(( x,c )=>{
         return  <CreateLetter key={c} x={x.letter} letterState={x.letterState} />
       })
     }</span></>; 

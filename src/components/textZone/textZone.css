@@ -1,4 +1,4 @@
-.zone{width: 50%; height: 65%; border: 3px solid white;border-radius: 15px;word-wrap: break-word;
+.zone{width: 70%; height:70%; border: 3px solid white;border-radius: 15px;word-wrap: break-word;
 padding: 15px;margin:auto auto;font-size: 22px;font-family: sans-serif;color: white !important;
  
 } 
@@ -12,5 +12,4 @@ span{font-family: Arial, Helvetica, sans-serif;}
 .mistake{
     color: red;
 }
-.span-active{border-bottom: 3px solid orange;}
-/* .space{border: 2px solid rgb(186, 240, 9);} */
+

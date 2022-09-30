@@ -1,13 +1,16 @@
-function WaitText({setInputZone,setPage}){
+import {Link} from 'react-router-dom';
+function WaitText(){
     return  <>
             <div className="zone center">
                 <div className="zone-btn center">
-                    <button onClick={()=>{setPage(true); setInputZone(true);} }>Insert Text</button>
+                    <Link to='/text'>Insert Text</Link>
                     <hr /> 
-                    <button onClick={()=>{ setPage(false); }}>Text Interval</button>
-                </div> 
+                    <Link  to="/interval">Text Interval</Link>
+                </div>
             </div> 
     </>
 }
 export default WaitText;
-// {}
+ 
+                {/* </div> onClick={()=>{ setPage(false); }}*/ }
+                {/* onClick={()=>{setPage(true); setInputZone(prev=> !prev);} } */}
