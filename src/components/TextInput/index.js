@@ -3,7 +3,7 @@ import React,{memo,useCallback,useEffect, useMemo, useState} from "react";
 
 function TextInput({paragraph,setText,closedBox}){
     const ref=React.createRef();  
-    const createText=()=> ref.current.value.split(' ').map((x,key)=>{ 
+    const createText=()=> ref.current.value.split(/(\s+)/).map((x,key)=>{ 
         return { 
             word:x,
             wordState:key==0 ? true:false,
@@ -11,7 +11,7 @@ function TextInput({paragraph,setText,closedBox}){
         }
     })  ;
     const handler=useCallback(()=>{  
-        if(ref.current.value !=""){  let rf= createText();console.log('ggg',rf)
+        if(ref.current.value !=""){  let rf= createText();//console.log('ggg',rf)
             setText( rf);
             closedBox(false);
         }
@@ -24,7 +24,7 @@ function TextInput({paragraph,setText,closedBox}){
             //paragraph.toString(r=>r.word)
            
         (ref.current.value =paragraph.reduce((previous, current) => {
-             return  previous!=="" ? `${previous} ${current.word}` : current.word
+             return previous+current.word 
         },"")); 
            
     },[paragraph]);

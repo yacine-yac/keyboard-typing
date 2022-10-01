@@ -11,8 +11,8 @@ function App(){
   const [inputZont,setInputZone]=useState(false); // input text box state
   const {pathname}=useLocation(); 
   let [paragraph,setParagraph]=useState(null); 
-   
-  const root=document.getElementById('root'); //console.log("===",paragraph);
+   console.log('ggggsss',paragraph,pathname) 
+  const root=document.getElementById('root');  //console.log("===",state);
   // root.onclick=()=>{ inputZont==true && setInputZone(false); }; 
   return  <>
    
@@ -21,8 +21,8 @@ function App(){
           
           <Routes>
                  <Route path="/"  element={<WaitText  />} />
-                 <Route path="/interval"  element={<TextInterval InputZone={inputZont} setInputZone={setInputZone}/>} />
-                 <Route path="/text"  element={<Textzone paragraph={paragraph} setParagraph={setParagraph} textState={setState} text={state} />} />
+                 <Route path="/interval"  element={<TextInterval input={state} InputZone={inputZont} setInputZone={setInputZone}/>} />
+                 <Route path="/text"  element={<Textzone  paragraph={paragraph} />} />
                  <Route path="*"  element={<WaitText />} />
           </Routes>
           {/* {  
@@ -39,8 +39,8 @@ function App(){
           } */}
         
          </div>
-         <div className="demo2">
-            <Keyboard status={inputZont} textState={setState} />
+         <div className="demo2"> 
+            <Keyboard  status={(inputZont==true || paragraph ==null) ? false: true}  setParagraph={setParagraph} />
          </div> 
    </div>
    <div className='demo1-settings'>

@@ -1,6 +1,7 @@
 import CreateLetter from './CreateLetter'; 
 import {  memo,useState,useEffect  } from 'react'; 
-const CreateWord=({word,wordState,input,checkPosition})=>{    
+const CreateWord=({word,wordState,input,checkPosition})=>{   
+  {   console.log('zone',word,wordState,input)}  
     let map_word=word.split('').map((x)=>{
           return  {
                     letter:x,
