@@ -1,4 +1,4 @@
 import {  combineReducers } from "redux";
 import { textReducer } from "./text";
-
-export const allReducers=combineReducers({words: textReducer});
+import {KeyboardReducer} from "./keyboard/index"
+export const allReducers=combineReducers({words: textReducer,keyboard:KeyboardReducer});

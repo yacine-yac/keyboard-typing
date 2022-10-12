@@ -5,22 +5,23 @@ export function AtextInsert(words){
     }
 }
 
-export function AtextCheck(position,checked){
+export function AtextCheck(position,checked,state){
     return {
         type:"check",
         payload:{
             position:position,
-            checked:checked
+            checked:checked,
+            wordState:state
         }
     }
 }
 
-export function AtextState(position,wordState){
-    return {
-        type:"wordState",
-        payload:{
-            position:position,
-            wordState:wordState
-        }
-    }
-}
+// export function AtextState(position,wordState){
+//     return {
+//         type:"wordState",
+//         payload:{
+//             position:position,
+//             wordState:wordState
+//         }
+//     }
+// }
