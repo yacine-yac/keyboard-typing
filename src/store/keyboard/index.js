@@ -9,7 +9,7 @@ export const KeyboardReducer=(state=initialState,action)=>{
                             };
         case "pop":{  return {...state,value: state.value.slice(0,-1)} };
         case "back": { return{...state, value: state.value.slice(0,-1) }};
-        case "switch": return {value:"",shift:!state.shift};
+        case "switchKey": return {value:"",shift:!state.shift};
         case 'clear': return {...state,value:""}
         default : return state;
     }

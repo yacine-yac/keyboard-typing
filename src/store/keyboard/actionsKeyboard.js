@@ -6,7 +6,7 @@ export function Akeyboardadd(value){
 }
 export function Akeyboardswitch(){ 
     return {
-        type:"switch", 
+        type:"switchKey", 
     }
 }
 export function Akeyboardclear(){
