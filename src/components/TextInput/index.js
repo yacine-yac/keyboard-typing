@@ -5,37 +5,47 @@ import {AtextInsert} from "../../store/text/actionsText";
 
 function TextInput({closedBox}){ 
     const words =useSelector(state=>{return state.words});
-    const dispatchWords=useDispatch();
-    const ref=React.createRef(); 
+    const dispatchWords=useDispatch(); 
+    const [input,setInput]=useState(""); 
+    const titleclass=input.length >100 ? "title_mistake": "title_normale" ;
+    const titletext=input.length >0 ? `You inserted  ${input.length >1? input.length+"/100 charachters"  : "1/100 charachter"}` : "Accept only 100 charachters";
     //===========================================================================================
       
-    const createText=()=> ref.current.value.split(/(\s+)/).map((x,key)=>{ 
+    const createText=()=>input.split(/(\s+)/).map((x,key)=>{ 
         return { 
             word:x,
             wordState:key==0 ? true:false,
             check:null
         }
-    });
+    }); 
     //===========================================================================================
-    const handler=()=>{  
-        if(ref.current.value !=""){  
-            let rf= createText();console.log('iii',rf);
-            dispatchWords(AtextInsert(rf));
-            closedBox(false); 
-        }
+    const handler=(e)=>{
+        e.preventDefault(); 
+        if(input.length <101){  
+            dispatchWords(AtextInsert(input =="" ? [] : createText())); 
+            closedBox(false);
+        } 
     }; 
     //=====================================================================================
     useEffect(()=>{
         words.length>0 &&  
-                        (ref.current.value =words.reduce((previous, current) => {
+                        (input =words.reduce((previous, current) => {
                             return previous+current.word 
                         },"")); 
     },[words]);
+    //============================================================================================== */
+    const handleCounter=(e)=>{ 
+        setInput(e.target.value);
+    }
+    ///====================================================================================
     return <>
          <div className="layer-up area-input block-center">
               <div  className="inp-text ">
-                <textarea ref={ref}  placeholder='Insert your text'></textarea>
-                <button onClick={handler} className='buttons-ok'>Insert</button> {/*  */}
+                <h2 className={titleclass}>{titletext}</h2>
+                <form onSubmit={handler}>
+                    <textarea    onChange={ handleCounter }  placeholder='Insert your text'></textarea>
+                    <button  className='buttons-ok'>Insert</button> {/*  */}
+                </form>
               </div>
          </div>
     </>
