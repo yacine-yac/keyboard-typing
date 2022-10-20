@@ -1,24 +1,23 @@
-import { getPropertyCss,setPropertyCss } from './CssProperties';
 import { useDispatch,useSelector } from 'react-redux';
-import {AthemeSwitch,AsettingManipulation} from "../../store/settings/Asettings";
+import {AthemeSwitch,AsettingManipulation,AColorChange} from "../../store/settings/Asettings";
 import './index.css'
-import localStorage from 'local-storage';
-import rgb from 'rgb-hex' 
-function Settingszone(){  
-    const colorBar="#"+rgb(getPropertyCss('--bar-color'));
+import localStorage from 'local-storage'; 
+function Settingszone(){   
     const dispatchSetting=useDispatch();
-    const rangeState=useSelector(state=>state.setting.speed);
+    const {color,speed}=useSelector(state=>({speed: state.setting.speed,color:state.setting.color}));  console.log("this color ",color); 
 //=============================================================================================
-    const handleBarColor=(e)=>{
-            setPropertyCss("--bar-color",e.target.value);
+    const handleBarColor=(e)=>{ 
+            dispatchSetting(AColorChange( e.target.value));
+            localStorage.set('color',e.target.value);
     }
     const handleThem=(e)=>{
         dispatchSetting(AthemeSwitch());
         localStorage.set('mode',e.target.checked);
     }
 //===============================================================================================
-  const handleRange=(e)=>{ console.log(e.target.value,">>>>");
-     dispatchSetting(AsettingManipulation(e.target.value));
+  const handleRange=(e)=>{ 
+      dispatchSetting(AsettingManipulation(e.target.value));
+     localStorage.set('speed',Number(e.target.value));
   } 
 //===============================================================================================
     return <> 
@@ -31,14 +30,13 @@ function Settingszone(){
                     </li>
                     <li>
                         <span>Check bar</span> 
-                        <input type="color" onChange={handleBarColor}   defaultValue={colorBar} />
+                        <input type="color" onChange={handleBarColor}  defaultValue={color.substr(1,color.length-2)} />
                     </li>
                     <li>
                        <span> Write speed</span> 
                     </li>
                     <li><label htmlFor="range">value is </label>
-                        <input id="range" onChange={handleRange} type="range" max="100" min="0" defaultValue={rangeState}  ></input>
-                        
+                        <input id="range" onChange={handleRange} type="range" max="100" min="0" defaultValue={speed}  ></input>
                     </li>
               </div>
          </div>

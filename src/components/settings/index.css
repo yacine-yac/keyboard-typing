@@ -1,6 +1,6 @@
 .settings{transform: translate(-30%,78%);
     width: 90%;height: 100%;background-color: var(--box-ground);
-	font-family: sans-serif;
+	font-family: sans-serif;box-shadow: 0px 0px 15px 0px var(--key-shadow);
 }
 .setting-block{flex-direction: column;color: var(--text);}
 ul{border: 3px solid var(--borders);width: 70%;height: 80%;
