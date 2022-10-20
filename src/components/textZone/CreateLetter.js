@@ -1,8 +1,8 @@
 import { memo } from "react";
 
 const CreateLetter=({x,letterState})=>{ 
-      
-     return <i  className={letterState ==false ? "n-active":"active"}>{x}</i>  
+     const classname= letterState ==false ? "n-active":"active";
+     return <i  className={classname}>{x}</i>  
    
 } 
 export default memo(CreateLetter);
