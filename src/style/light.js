@@ -1,26 +1,35 @@
-
- const light= `
-:root{
-     
-  --bar-color:rgb(185, 250, 6);
-  --ground: white  ;
-  --borders:white;
-  --text:red;
+import add from "./media/add_Light.png";
+import settings from './media/settings_Light.png';
+ const light= ` 
+  --ground:#e4e5f1 ;
+  --borders:rgb(72,75,106);
+  --text:#484b6a;
 /* keyboard */
-  --key-text:#eee;
-  --key-ground:#333;
-  --key-shadow:#222;
-  --key-border:black;
+  --key-text:white;
+  --key-ground: rgb(72,75,106);
+  --key-shadow:#e4e5f1;
+  --key-border:rgb(72,75,106);
 /* active keyboard key*/
   --key-shadow-active:white;
-  --key-text-active:#aaa;
-  --key-ground-active:#2a2a2a;
+  --key-text-active:white;
+  --key-ground-active:#9394a5;
 /* interval */
   --letter-active:greenyellow;
-  --small-text:rgba(236, 236, 236, 0.793);
+  --small-text:#83828E;
 /* boxes */
-  --box-ground:rgb(37, 41, 56);
-  --li-active:rgba(240, 255, 255, 0.386);
+  --box-ground:rgb(72,75,106);
+  --li-active:#929094;
+  --title-input:black;
+/* zone text*/
+--zone-border:black;
+--zone-text:black;
+/* zone text-active */
+--active-text:01000A;
+--n-active-text:#7E7E80;
+--text-setting:white;
+/*icons */
+--settings:url(${add});
+--input:url(${settings});
 
-}`;
+`;
 export default light;

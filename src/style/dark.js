@@ -1,7 +1,7 @@
-const dark =`:root{
-     
-    --bar-color:rgb(185, 250, 6);
-    --ground: rgb(25, 37, 47)  ;
+ import add from "./media/add.png";
+ import setting from "./media/setting.png"
+ const dark =`   
+    --ground: rgb(25, 37, 47);
     --borders:white;
     --text:white;
   /* keyboard */
@@ -19,6 +19,16 @@ const dark =`:root{
   /* boxes */
     --box-ground:rgb(37, 41, 56);
     --li-active:rgba(240, 255, 255, 0.386);
-  
-  }`;
+    --title-input:white;
+  /* zone text*/
+    --zone-border:white;
+    --zone-text:white;
+   /* zone text-active */
+   --active-text:white;
+   --n-active-text:rgb(161, 161, 161);
+   --text-setting:white;
+   /*icons */
+    --settings: url(${add}) ;
+    --input:url(${setting});
+  `;
 export default dark;
