@@ -1,12 +1,13 @@
-.area-input{display: flex; width: 180%;height: 105%;transform: translate(-160px,130px);box-shadow: 0px 0px 14px 0px var(--key-shadow); }
+.area-input{display: flex; width: 180%;height: 105%;transform: translate(-160px,130px);box-shadow: 0px 0px 14px 0px var(--key-shadow);}
 .inp-text{background-color: var(--box-ground);width: 97%;height: 90%;border-radius: 6px;padding: 10px;}
 .block-center{left: 0;right: 0;top: 0;bottom: 0;position: absolute; margin:  auto;margin-right: 0;}
  
 .area-input h2{font-size: 13px;font-family: sans-serif; }
-textarea{width: 95%;height: 65%;padding: 3%; resize: none;outline: none;background: none;text-align: justify;
-font-family: sans-serif;color: var(--text);font-size: 16px;}
+.area-input form{width: 100%;height:60%;}
+textarea{width: 90%;height: 72%;padding: 3%; resize: none;outline: none;background: none;text-align: justify;
+font-family: sans-serif;color: white;font-size: 16px;}
 textarea:active{opacity: 1;}
-.buttons-ok{width: 120px;height: 30px;border: 3px solid var(--borders);outline: none;color: var(--text);
+.buttons-ok{width: 120px;height: 30px;border: 3px solid white;outline: none;color: white;
     background: none;border-radius: 12px;float: right;cursor: pointer; margin-top: 5px;opacity: 0.4;}
 .buttons-ok:hover{
     transition: 0.6s ease-in;border-color: var(--borders);opacity:1;

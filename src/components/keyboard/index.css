@@ -21,9 +21,9 @@
   
   .keyboard__row > * {
       position: relative;
-      background: #333;
+      background: var(--key-ground);
       text-align: center;
-      color: #eee;
+      color: var(--key-text);
       float: left;
       border-radius: 0.3em;
       margin: 0.2em;
@@ -33,9 +33,9 @@
       box-sizing: border-box;
       cursor: pointer;
       --webkit-user-select: none;
-      border: 1px solid #444;
-      box-shadow: 0 0.2em 0 0.05em #222;
-      border-bottom-color: #555;
+      border: 1px solid var(--key-border);
+      box-shadow: 0 0.2em 0 0.05em var(--key-shadow);
+      /* border-bottom-color: #555; */
   }
   
   .keyboard__row--h1 > div {
@@ -43,18 +43,18 @@
   }
   
   .keyboard__row > div[data-pressed] {
-      background: #2a2a2a;
-      color: #aaa; border:2px solid red;
+      background: var(--key-ground-active);
+      color: var(--key-text-active); border:2px solid red;
       position: relative;
       top: 0.2em;
-      box-shadow: 0 0 0 0.05em black;
+      box-shadow: 0 0 0 0.05em var(--key-shadow-active);
   }
 .active-btn-k{
-    background: #2a2a2a;
-      color: #aaa; border:2px solid red;
+    background: var(--key-ground-active);
+      color: var(--key-text-active); border:2px solid red;
       position: relative;
       top: 0.2em;
-      box-shadow: 0 0 0 0.05em black;
+      box-shadow: 0 0 0 0.05em var(--key-shadow-active);
 } 
   .key--w3 {
       width: 4.6em;

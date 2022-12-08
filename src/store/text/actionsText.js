@@ -5,7 +5,7 @@ export function AtextInsert(words){
     }
 }
 
-export function AtextCheck(position,checked,state){
+export function AtextCheck(position,checked,state){ 
     return {
         type:"check",
         payload:{

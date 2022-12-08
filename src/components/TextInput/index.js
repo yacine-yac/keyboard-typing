@@ -29,9 +29,9 @@ function TextInput({closedBox}){
     //=====================================================================================
     useEffect(()=>{
         words.length>0 &&  
-                        (input =words.reduce((previous, current) => {
+                        (setInput(words.reduce((previous, current) => {
                             return previous+current.word 
-                        },"")); 
+                        },""))); 
     },[words]);
     //============================================================================================== */
     const handleCounter=(e)=>{ 
@@ -43,7 +43,7 @@ function TextInput({closedBox}){
               <div  className="inp-text ">
                 <h2 className={titleclass}>{titletext}</h2>
                 <form onSubmit={handler}>
-                    <textarea    onChange={ handleCounter }  placeholder='Insert your text'></textarea>
+                    <textarea defaultValue={input}    onChange={ handleCounter }  placeholder='Insert your text'></textarea>
                     <button  className='buttons-ok'>Insert</button> {/*  */}
                 </form>
               </div>

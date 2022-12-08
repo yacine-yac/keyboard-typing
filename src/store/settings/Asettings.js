@@ -4,7 +4,7 @@ export function AthemeSwitch(){
     }
 }
 
-export function AColorChange(color){
+export function AColorChange(color){ 
     return {
         type:"changeColor",
         payload:{color}

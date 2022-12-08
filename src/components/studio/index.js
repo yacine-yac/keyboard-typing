@@ -4,17 +4,15 @@ import TextInterval from "../interval";
 import TextInput from '../TextInput';
 import { useLocation,Link} from 'react-router-dom';
 import {   useState,memo } from 'react';
-import Settingszone from '../settings';
-function Studio(){ console.log('oooo')
+import Settingszone from '../settings';  
+function Studio(){  
     const {pathname}=useLocation(); 
     const [zoneInput,setZoneInput]=useState(false);  
     const [box,setBox]=useState(false);
     //====================================================================
-    const handleInputBox=()=>{  
-         pathname=="/text" && (
-            box===true && setBox(prev=>!prev)
-            ,setZoneInput(prev=> !prev)
-        )
+    const handleInputBox=()=>{ 
+        if(pathname=="/text"  &&  box==true) {  setBox(prev=>!prev); setZoneInput(prev=>!prev);}
+        else{setZoneInput(prev=>!prev);}
     }
     //====================================================================
     const renderSwitch=()=>{
@@ -28,8 +26,8 @@ function Studio(){ console.log('oooo')
             setBox(!box);  
         }; 
     //===========================================================================
-    return <>
-    <div id="demo1" className="demo1">
+    return <> 
+    <div id="demo1" className="demo1 center-v"> 
             <div className="demo2">
                 { renderSwitch()}
             </div> 
@@ -44,7 +42,7 @@ function Studio(){ console.log('oooo')
           <div className="demo1-buttons block-center center">
                <button type='button' onClick={handleInputBox}  className='button'></button>
                <button type='button' onClick={handleSettings}  className='button button-p active-button'  ></button>
-               {box==true &&  (<Settingszone />)} 
+               {box==true &&  (<Settingszone/>)} 
                {(zoneInput==true && (<TextInput closedBox={setZoneInput} />))}
               
           </div> 

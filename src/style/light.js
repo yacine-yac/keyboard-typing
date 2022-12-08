@@ -19,13 +19,13 @@ import settings from './media/settings_Light.png';
 /* boxes */
   --box-ground:rgb(72,75,106);
   --li-active:#929094;
-  --title-input:black;
+  --title-input:white;
 /* zone text*/
 --zone-border:black;
 --zone-text:black;
 /* zone text-active */
---active-text:01000A;
---n-active-text:#7E7E80;
+--active-text:#01000A;
+--n-active-text:#9394a5;
 --text-setting:white;
 /*icons */
 --settings:url(${add});

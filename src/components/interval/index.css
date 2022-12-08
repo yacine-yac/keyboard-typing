@@ -1,0 +1,9 @@
+.letter-active{color: var(--letter-active)}
+/* .z-letter{position: relative;} */
+.z-letter h4{
+    
+    /* left: 0;right: 0;top: 0;bottom: 0; */
+    font-size: 13px;color:  var(--small-text);
+    margin: auto;bottom: 0;right: 0;
+    margin-bottom: 8px;margin-right: 8px;position: absolute; 
+}

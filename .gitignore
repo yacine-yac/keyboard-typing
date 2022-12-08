@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# markdown pictures
+
+/screen_shot
 # production
 /build
 

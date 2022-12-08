@@ -4,7 +4,7 @@ import './index.css'
 import localStorage from 'local-storage'; 
 function Settingszone(){   
     const dispatchSetting=useDispatch();
-    const {color,speed}=useSelector(state=>({speed: state.setting.speed,color:state.setting.color}));  console.log("this color ",color); 
+    const {color,speed}=useSelector(state=>({speed: state.setting.speed,color:state.setting.color}));  
 //=============================================================================================
     const handleBarColor=(e)=>{ 
             dispatchSetting(AColorChange( e.target.value));
@@ -30,12 +30,12 @@ function Settingszone(){
                     </li>
                     <li>
                         <span>Check bar</span> 
-                        <input type="color" onChange={handleBarColor}  defaultValue={color.substr(1,color.length-2)} />
+                        <input type="color" onChange={handleBarColor}  defaultValue={color.replace(/['"]+/g, '')} />
                     </li>
                     <li>
-                       <span> Write speed</span> 
+                       <span>Write speed</span> 
                     </li>
-                    <li><label htmlFor="range">value is </label>
+                    <li>
                         <input id="range" onChange={handleRange} type="range" max="100" min="0" defaultValue={speed}  ></input>
                     </li>
               </div>

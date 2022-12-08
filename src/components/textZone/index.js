@@ -13,36 +13,35 @@ function Textzone(){
     const [wordCounter,setwordCounter]=useState(-1); 
     //============================================================================================
     useEffect(()=>{  
-         (parah.length>0) &&  (setParagraph(parah),setwordCounter(prev=>prev+1)); 
+         if(parah.length>0){setParagraph(parah);setwordCounter(prev=>prev+1)}
     },[parah]); 
     useMemo(()=>{  
-        (parah.length>0 && wordCounter<paragraph.length) &&  
-          (  
-            ( (wordCounter!==paragraph.length-1 ) 
-               ? setParagraph(prev=>{
+        if(parah.length>0 && wordCounter<paragraph.length){
+            if(wordCounter!==paragraph.length-1 ){ 
+               setParagraph(prev=>{
                      prev[wordCounter]['check']= inputed.value ;
                      prev[wordCounter]['wordState']=true;
                      return prev;
                     })
-               : (paragraph[wordCounter]['check']!== paragraph[wordCounter]['word'] 
-                     &&  setParagraph(prev=>{
+            }else{
+                    paragraph[wordCounter]['check']!== paragraph[wordCounter]['word'] 
+                      &&  setParagraph(prev=>{
                         prev[wordCounter]['check']= inputed.value ;
                         prev[wordCounter]['wordState']=true;
                         return prev;
-                      }))
-            ,(paragraph[wordCounter]['check']==paragraph[wordCounter]['word'] && wordCounter< paragraph.length-1) && 
-                 ( 
+                      })
+            }
+            if(paragraph[wordCounter]['check']==paragraph[wordCounter]['word'] && wordCounter< paragraph.length-1){
                     setParagraph(prev=>{  
                          prev[wordCounter]['check']=inputed.value;
                          prev[wordCounter]['wordState']=false;
                          return prev;
-                    }),  
-                     dispatchParagraph(AtextCheck(wordCounter,inputed.value,true)) 
-                    ,dispatchKeyboard(Akeyboardclear()) 
-                    ,setwordCounter(prev=>prev+1)
-                 )
-            ) 
-           ) 
+                    });  
+                    dispatchParagraph(AtextCheck(wordCounter,inputed.value,true)) 
+                    dispatchKeyboard(Akeyboardclear()) ;
+                    setwordCounter(prev=>prev+1);
+                  } 
+        }
     },[inputed,paragraph]);
 //================================================================================================
     return  <>

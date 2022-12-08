@@ -1,89 +1,50 @@
 import "./index.css";
-import {useState,useEffect,memo, useMemo} from "react";
-import {useNavigate} from "react-router-dom";
-function Keyboard({status,setParagraph}){  //console.log('status',status);
-  const [inputs,setInp]=useState(null);
-  let button=[],blockButton={}; let route=useNavigate();
+import {useState ,memo  } from "react"; 
+import { useDispatch } from "react-redux"; 
+import {Akeyboardadd,AkeyboardBack, Akeyboardswitch} from "../../store/keyboard/actionsKeyboard";
+function Keyboard({status}){ 
+  const dispatchKeyboard=useDispatch();  
+  let button=[],blockButton={};  
   const [capsButton,setcapsButton]=useState(false);
-  const handleBlockButton=(nodeelement,keycode,key)=>{
-    keycode ==20 ? 
-        setcapsButton(!capsButton) 
-    :
-        blockButton[keycode] ? 
-            (delete blockButton[keycode],nodeelement.classList.remove('active-block')):
-            (blockButton[keycode]=key,nodeelement.classList.add('active-block'));
+//==================================================================================================================
+  const handleBlockButton=(nodeelement,keycode,key,button)=>{ 
+    keycode ==20  
+      ?setcapsButton(!capsButton) 
+      :blockButton[keycode]  
+          ?  (delete blockButton[keycode],nodeelement.classList.remove('active-block'))
+          :  (blockButton[keycode]=key,nodeelement.classList.add('active-block')
+             ,(button.shiftKey===true && button.ctrlKey==true)
+              && dispatchKeyboard(Akeyboardswitch())  
+          );
   } 
-  const HandleKeydown=(key,nodeelement)=>{  
+  const HandleKeydown=(key,nodeelement)=>{   
       button.forEach(element => {element.classList.remove('active-btn-k');});
               button=[];
               button.push(nodeelement);
               nodeelement.classList.add("active-btn-k");
-             // handleText(key);
-             setInp(prev=>{ return prev==null ? {count:0,text:key} : {...prev,text:prev.text+key}})
-              // console.log(inputs,"inputes handle");
-                   //setInp(prev=>{ return {count:1,text:key}
-              // return {
-              //      count:paragraph[inputs['count']].word.length == prev.text ? prev.count+1 : prev.count,
-              //      text:prev.text+letter
-              //  }    
-         //});  
+           key == "Backspace" 
+           ?  dispatchKeyboard(AkeyboardBack()) 
+           :  dispatchKeyboard(Akeyboardadd(key));
+            
   }
-  window.onkeydown=(e)=>{ 
-    if(status==true) {
+  //** window keyboard events */=====================================================================================================================
+  window.onkeydown=(e)=>{   
+    if(status==true) { 
             const targetting=document.querySelector(`div[data-key="${e.keyCode}"]`);
               targetting && (
                   targetting !==null && 
-                    (targetting.getAttribute('block-button') !==null ? handleBlockButton(targetting,e.keyCode,e.key) 
+                    (targetting.getAttribute('block-button') !==null 
+                    ? handleBlockButton(targetting,e.keyCode,e.key,e) 
                     : HandleKeydown(e.key,targetting))
               )
               setTimeout(()=>{targetting.classList.remove("active-btn-k")},100); 
     }
-  };
-  useMemo(()=>{
-    (inputs!==null) && (setParagraph(prev=>{
-     // console.log('version',prev);
-      
-      prev[inputs["count"]]={
-        ...prev[inputs['count']],
-        check:inputs['text'],
-        wordState:true
-      }  
-       
-      return prev;   
-    }),console.log(inputs),route('/text') ); 
-
-  },[inputs]);
-  const handleText=(letter)=>{
-    
-    //  setInp({count:1,text:"fr"});
-    // console.log('fff',inputs );
-    // //  setInp({count:1,text:"fr"});
-        
-    //     (inputs!==null) && setParagraph(prev=>{
-    //           prev[inputs["count"]]   ={
-    //             ...prev[inputs['count']],
-    //             check:letter,
-    //             WordState:true
-    //           }      
-    //     }); 
-    //     (inputs!==null) ? setParagraph(prev=>{
-    //           prev[inputs["count"]]   ={
-    //             ...prev[inputs['count']],
-    //             check:letter,
-    //             WordState:true
-    //           }      
-    //     }): setParagraph({count:0,text:letter}); 
-        // textState(prev=> prev ?
-        //            (letter ==="Backspace" ? prev.slice(0,-1) : prev+letter):
-        //            (letter ==="Backspace" ? null: letter)
-        // );  
-  } 
+  }; 
   window.onkeyup=(e)=>{ 
-  if(status==true) {
-    blockButton[e.keyCode] && 
-    (delete blockButton[e.keyCode],
-    document.querySelector(`div[data-key="${e.keyCode}"]`).classList.remove('active-block')) 
-  }
+    if(status==true) {
+      blockButton[e.keyCode] && (delete blockButton[e.keyCode],
+      document.querySelector(`div[data-key="${e.keyCode}"]`).classList.remove('active-block')) 
+    }
   };
   /**jsx keyboard ===================================================================== */
     return <>
