@@ -21,23 +21,22 @@ export default function TextInterval(){
     }
 //===================================================================================================
     useEffect(()=>{
-        (keyboard.shift===true) 
-           ?( 
-                (keyboard.value==="")
-                ? state===null && setstate(stringRandom())
-                :(
-                    (state===keyboard.value)
-                        ? ( setclassStatus(true)
-                            ,setTimeout( ()=>{  
+        if(keyboard.shift===true){ 
+                if(keyboard.value===""){
+                 state===null && setstate(stringRandom())
+                }else{
+                    if(state===keyboard.value){
+                            setclassStatus(true);
+                            setTimeout( ()=>{  
                                      setstate(stringRandom());
                                      dispatchkeyboard(Akeyboardclear())
                                      setclassStatus(false)
-                            },speedSlide)
-                            )
-                        : dispatchkeyboard(Akeyboardclear())
-                )      
-            )
-            : keyboard.value!=="" ? (dispatchkeyboard(Akeyboardclear())) :setstate(null)
+                            },speedSlide);
+                        }else{
+                             dispatchkeyboard(Akeyboardclear());
+                        }
+                }      
+            }else{ keyboard.value!=="" ? (dispatchkeyboard(Akeyboardclear())) :setstate(null)}
     },[keyboard]); 
   
 //=======================================================================================================    
