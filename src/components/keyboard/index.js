@@ -8,7 +8,7 @@ function Keyboard({status}){
   const [capsButton,setcapsButton]=useState(false);
 //==================================================================================================================
   const handleBlockButton=(nodeelement,keycode,key,button)=>{ 
-    if(keycode ==20){
+    if(keycode ===20){
              setcapsButton(!capsButton);
     }else{
            if(blockButton[keycode] ) {
@@ -17,7 +17,7 @@ function Keyboard({status}){
            }else{
               blockButton[keycode]=key;
               nodeelement.classList.add('active-block');
-              if(button.shiftKey===true && button.ctrlKey==true){
+              if(button.shiftKey===true && button.ctrlKey===true){
                              dispatchKeyboard(Akeyboardswitch()) ;
               }
            }
@@ -29,14 +29,14 @@ function Keyboard({status}){
               button=[];
               button.push(nodeelement);
               nodeelement.classList.add("active-btn-k");
-           key == "Backspace" 
+           key === "Backspace" 
            ?  dispatchKeyboard(AkeyboardBack()) 
            :  dispatchKeyboard(Akeyboardadd(key));
             
   }
   //** window keyboard events */=====================================================================================================================
   window.onkeydown=(e)=>{   
-    if(status==true) { 
+    if(status===true) { 
             const targetting=document.querySelector(`div[data-key="${e.keyCode}"]`);
               targetting && (
                   targetting !==null && 
@@ -48,7 +48,7 @@ function Keyboard({status}){
     }
   }; 
   window.onkeyup=(e)=>{ 
-    if(status==true && blockButton[e.keyCode] ) {
+    if(status===true && blockButton[e.keyCode] ) {
         delete blockButton[e.keyCode];
         document.querySelector(`div[data-key="${e.keyCode}"]`).classList.remove('active-block'); 
     }
@@ -185,7 +185,7 @@ function Keyboard({status}){
     </div>
   </div>
   <div className="keyboard__row">
-    <div block-button="false" className={capsButton==true ? "key--bottom-left key--word key--w5 active-block" : "key--bottom-left key--word key--w5" } data-key="20">
+    <div block-button="false" className={capsButton  ? "key--bottom-left key--word key--w5 active-block" : "key--bottom-left key--word key--w5" } data-key="20">
       <span>caps lock</span>
     </div>
     <div className="key--letter" data-key="65" data-char="A">A</div>
