@@ -8,14 +8,21 @@ function Keyboard({status}){
   const [capsButton,setcapsButton]=useState(false);
 //==================================================================================================================
   const handleBlockButton=(nodeelement,keycode,key,button)=>{ 
-    keycode ==20  
-      ?setcapsButton(!capsButton) 
-      :blockButton[keycode]  
-          ?  (delete blockButton[keycode],nodeelement.classList.remove('active-block'))
-          :  (blockButton[keycode]=key,nodeelement.classList.add('active-block')
-             ,(button.shiftKey===true && button.ctrlKey==true)
-              && dispatchKeyboard(Akeyboardswitch())  
-          );
+    if(keycode ==20){
+             setcapsButton(!capsButton);
+    }else{
+           if(blockButton[keycode] ) {
+                  delete blockButton[keycode];
+                  nodeelement.classList.remove('active-block');
+           }else{
+              blockButton[keycode]=key;
+              nodeelement.classList.add('active-block');
+              if(button.shiftKey===true && button.ctrlKey==true){
+                             dispatchKeyboard(Akeyboardswitch()) ;
+              }
+           }
+    }
+         
   } 
   const HandleKeydown=(key,nodeelement)=>{   
       button.forEach(element => {element.classList.remove('active-btn-k');});
@@ -41,9 +48,9 @@ function Keyboard({status}){
     }
   }; 
   window.onkeyup=(e)=>{ 
-    if(status==true) {
-      blockButton[e.keyCode] && (delete blockButton[e.keyCode],
-      document.querySelector(`div[data-key="${e.keyCode}"]`).classList.remove('active-block')) 
+    if(status==true && blockButton[e.keyCode] ) {
+        delete blockButton[e.keyCode];
+        document.querySelector(`div[data-key="${e.keyCode}"]`).classList.remove('active-block'); 
     }
   };
   /**jsx keyboard ===================================================================== */
