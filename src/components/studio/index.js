@@ -11,7 +11,7 @@ function Studio(){
     const [box,setBox]=useState(false);
     //====================================================================
     const handleInputBox=()=>{ 
-        if(pathname=="/text"  &&  box==true) {  setBox(prev=>!prev); setZoneInput(prev=>!prev);}
+        if(pathname==="/text"  &&  box===true) {  setBox(prev=>!prev); setZoneInput(prev=>!prev);}
         else{setZoneInput(prev=>!prev);}
     }
     //====================================================================
@@ -22,7 +22,7 @@ function Studio(){
         default: return <div>error loading</div>}}
     //=====================================================================
     const handleSettings=()=>{  
-            zoneInput==true && setZoneInput(prev=>!prev);
+            zoneInput  && setZoneInput(prev=>!prev);
             setBox(!box);  
         }; 
     //===========================================================================
@@ -42,8 +42,8 @@ function Studio(){
           <div className="demo1-buttons block-center center">
                <button type='button' onClick={handleInputBox}  className='button'></button>
                <button type='button' onClick={handleSettings}  className='button button-p active-button'  ></button>
-               {box==true &&  (<Settingszone/>)} 
-               {(zoneInput==true && (<TextInput closedBox={setZoneInput} />))}
+               {box  &&  (<Settingszone/>)} 
+               {(zoneInput && (<TextInput closedBox={setZoneInput} />))}
               
           </div> 
          

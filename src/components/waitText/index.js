@@ -12,5 +12,3 @@ function WaitText(){
 }
 export default WaitText;
  
-                {/* </div> onClick={()=>{ setPage(false); }}*/ }
-                {/* onClick={()=>{setPage(true); setInputZone(prev=> !prev);} } */}

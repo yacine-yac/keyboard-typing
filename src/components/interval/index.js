@@ -15,12 +15,12 @@ export default function TextInterval(){
     const speedSlide= (100-speed)*2000/100; 
 //===================================================================================================
     const stringRandom=()=>{
-         const character="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\[\]\^\_\//";
+         const character="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz[]^_//";
          let position = Math.floor(Math.random()*(character.length));
          return character.charAt(position);
     }
 //===================================================================================================
-    useEffect(()=>{
+    useEffect(()=>{ 
         if(keyboard.shift===true){ 
                 if(keyboard.value===""){
                  state===null && setstate(stringRandom())
@@ -36,8 +36,10 @@ export default function TextInterval(){
                              dispatchkeyboard(Akeyboardclear());
                         }
                 }      
-            }else{ keyboard.value!=="" ? (dispatchkeyboard(Akeyboardclear())) :setstate(null)}
-    },[keyboard]); 
+            }else{
+                 keyboard.value!=="" ? (dispatchkeyboard(Akeyboardclear())) :setstate(null);
+            }
+    },[keyboard,speedSlide,state,dispatchkeyboard]); 
   
 //=======================================================================================================    
     return  <>
@@ -46,7 +48,7 @@ export default function TextInterval(){
                 <h2>Press Ctrl + Shift to start</h2>
             : 
                 <>
-                    <h2 className={classStatus ==true? "letter-active":null} >{state} </h2> 
+                    <h2 className={classStatus ? "letter-active":null} >{state} </h2> 
                     <h4>Press (Ctrl + Shift) for Stop</h4>
                  </>
             } 

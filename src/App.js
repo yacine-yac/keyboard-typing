@@ -13,7 +13,9 @@ function App(){
     localStorage.get('mode')==null && localStorage.set('mode',mode);
     localStorage.get('speed')==null && localStorage.set('speed',speed);
     localStorage.get('color')==null && localStorage.set('color',color);
-  },[]);  
+
+  });  
+
   return  <>
   <ThemeProvider theme={{mode:Boolean(localStorage.get('mode')),colorBar:color.substr(1,color.length-2)}}>
     <GlobalStyle/>

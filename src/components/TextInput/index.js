@@ -1,5 +1,5 @@
 import './index.css';
-import React,{memo,useCallback,useEffect, useMemo, useState} from "react";
+import React,{memo ,useEffect , useState} from "react";
 import { useSelector,useDispatch } from 'react-redux'; 
 import {AtextInsert} from "../../store/text/actionsText";
 
@@ -14,7 +14,7 @@ function TextInput({closedBox}){
     const createText=()=>input.split(/(\s+)/).map((x,key)=>{ 
         return { 
             word:x,
-            wordState:key==0 ? true:false,
+            wordState:key===0 ? true:false,
             check:null
         }
     }); 
@@ -22,7 +22,7 @@ function TextInput({closedBox}){
     const handler=(e)=>{
         e.preventDefault(); 
         if(input.length <101){  
-            dispatchWords(AtextInsert(input =="" ? [] : createText())); 
+            dispatchWords(AtextInsert(input ==="" ? [] : createText())); 
             closedBox(false);
         } 
     }; 
