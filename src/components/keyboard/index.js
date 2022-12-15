@@ -29,10 +29,11 @@ function Keyboard({status}){
               button=[];
               button.push(nodeelement);
               nodeelement.classList.add("active-btn-k");
-           key === "Backspace" 
-           ?  dispatchKeyboard(AkeyboardBack()) 
-           :  dispatchKeyboard(Akeyboardadd(key));
-            
+           if(key === "Backspace"){ 
+              dispatchKeyboard(AkeyboardBack());
+          }else{
+              dispatchKeyboard(Akeyboardadd(key));
+          }   
   }
   //** window keyboard events */=====================================================================================================================
   window.onkeydown=(e)=>{   
