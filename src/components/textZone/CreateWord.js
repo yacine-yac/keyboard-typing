@@ -15,12 +15,13 @@ const CreateWord=({word,wordState,input})=>{
     const keyboardDispatch=useDispatch();
     const [letterCounter,setletterCounter]=useState(0);
     const [checkWord,setcheckWord]=useState(map_word);
-    const classname= (wordState==true) ?  "span-active":'n-active';
+    const classname=  wordState  ?  "span-active":'n-active';
   //===========================================================================================   
-    useEffect(()=>{  
+  /* eslint-disable */  
+  useEffect(()=>{  
         if(input != null){
-          if(letterCounter==input.length-1){
-                if(input[input.length-1]==checkWord[letterCounter]["letter"]){ 
+          if(letterCounter===input.length-1){
+                if(input[input.length-1]===checkWord[letterCounter]["letter"]){ 
                     setcheckWord(prev=>{prev[letterCounter]['letterState']=true; return prev}); 
                     input.length <=word.length && setletterCounter(prev=>prev+1);
                 }else{
@@ -33,13 +34,13 @@ const CreateWord=({word,wordState,input})=>{
                 }
             }
           }else{
-              if(letterCounter ==1){
+              if(letterCounter ===1){
                  setcheckWord(prev=>{ prev[letterCounter-1]['letterState']=false; return prev;});
                  setletterCounter(0);  
               }
           }
             
-    },[input]);
+    },[input]); 
   //===========================================================================================
     return <>   
     <span className={classname}>

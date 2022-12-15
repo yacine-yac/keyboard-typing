@@ -14,7 +14,9 @@ function Textzone(){
     //============================================================================================
     useEffect(()=>{  
          if(parah.length>0){setParagraph(parah);setwordCounter(prev=>prev+1)}
-    },[parah]); 
+          
+    },[parah ]); 
+    /* eslint-disable */
     useMemo(()=>{  
         if(parah.length>0 && wordCounter<paragraph.length){
             if(wordCounter!==paragraph.length-1 ){ 
@@ -31,7 +33,7 @@ function Textzone(){
                         return prev;
                       })
             }
-            if(paragraph[wordCounter]['check']==paragraph[wordCounter]['word'] && wordCounter< paragraph.length-1){
+            if(paragraph[wordCounter]['check']===paragraph[wordCounter]['word'] && wordCounter< paragraph.length-1){
                     setParagraph(prev=>{  
                          prev[wordCounter]['check']=inputed.value;
                          prev[wordCounter]['wordState']=false;
@@ -54,7 +56,7 @@ function Textzone(){
                 <h2>Please Insseert Text Before</h2> 
             :   
                 paragraph.map((x,c)=>
-                         (<CreateWord key={c}  input={x.check =="" ? null : x.check } wordState={x.wordState}  word={x.word} />)
+                         (<CreateWord key={c}  input={x.check ==="" ? null : x.check } wordState={x.wordState}  word={x.word} />)
                             )    
                 }  
                </section> 
